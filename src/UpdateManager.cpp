@@ -74,10 +74,19 @@ void UpdateManager::onCheckFinished() {
     if (!m_currentReply) return;
 
     if (m_currentReply->error() != QNetworkReply::NoError) {
-        QString errStr = m_currentReply->errorString();
-        LOG_INFO("Update check response: " + errStr.toStdString());
-        if (!m_silentCheck) {
-            emit updateError("Unable to reach GitHub update server: " + errStr);
+        if (m_currentReply->error() == QNetworkReply::ContentNotFoundError) {
+            // 404 means no release has been published yet on GitHub -> up to date
+            LOG_INFO("No published releases found on GitHub repository yet.");
+            m_latestVersion = appVersion();
+            m_updateAvailable = false;
+            emit updateAvailableChanged();
+            emit updateCheckCompleted(false, appVersion());
+        } else {
+            QString errStr = m_currentReply->errorString();
+            LOG_INFO("Update check response: " + errStr.toStdString());
+            if (!m_silentCheck) {
+                emit updateError("Unable to reach GitHub update server: " + errStr);
+            }
         }
         m_currentReply->deleteLater();
         m_currentReply = nullptr;
