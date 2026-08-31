@@ -10,7 +10,7 @@
 
 **A blazing-fast, modern desktop tool for organizing, auto-detecting, and batch-updating brand metadata and country origins across your Assetto Corsa car mod collection.**
 
-[Download Latest Release (ACModOrganizer.exe)](https://github.com/Ricrdoss/ACModOrganizer/releases/latest) • [Features](#key-features) • [Building from Source](#building-from-source)
+[Download Latest Release (ACModOrganizer.exe)](https://github.com/Ricrdoss/ACModOrganizer/releases/latest)
 
 </div>
 
