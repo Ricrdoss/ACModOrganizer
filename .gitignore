@@ -1,0 +1,48 @@
+# Build & Output Directories
+build/
+dist/
+bin/
+out/
+x64/
+x86/
+Debug/
+Release/
+CMakeScripts/
+
+# Compiled Binaries & Libraries
+*.exe
+*.dll
+*.so
+*.dylib
+*.lib
+*.exp
+*.pdb
+*.ilk
+
+# Visual Studio & IDEs
+.vs/
+*.sln
+*.slnx
+*.vcxproj*
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+
+# Qt Generated & Cache Files
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.qmlc
+*.jsc
+*.aotstats
+Makefile*
+
+# Logs & Temporary Files
+*.log
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
