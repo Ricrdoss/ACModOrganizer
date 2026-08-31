@@ -99,9 +99,7 @@ qt_add_qml_module(ACModOrganize
         ui/Theme.qml
         ui/Main.qml
         ui/TopBar.qml
-        ui/FilterBar.qml
         ui/NavigationRail.qml
-        ui/StatsSidebar.qml
         ui/CarCard.qml
         ui/CarTableView.qml
         ui/UpdateNotificationDialog.qml

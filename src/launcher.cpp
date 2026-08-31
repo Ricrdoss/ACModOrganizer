@@ -65,7 +65,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     // 3. Standalone single-file bundle mode
     wchar_t localAppPath[MAX_PATH];
     if (SUCCEEDED(SHGetFolderPathW(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, localAppPath))) {
-        fs::path appDataDir = fs::path(localAppPath) / L"ACBO" / L"app";
+        fs::path appDataDir = fs::path(localAppPath) / L"ACModOrganizer" / L"app";
         fs::path targetExe = appDataDir / L"ACModOrganize.exe";
         fs::path stampFile = appDataDir / L".version_stamp";
 
@@ -112,7 +112,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
                         if (zipOffset != std::string::npos) {
                             wchar_t tempPathBuf[MAX_PATH];
                             GetTempPathW(MAX_PATH, tempPathBuf);
-                            fs::path tempZip = fs::path(tempPathBuf) / L"acbo_payload.zip";
+                            fs::path tempZip = fs::path(tempPathBuf) / L"acmodorganizer_payload.zip";
 
                             HANDLE hZipOut = CreateFileW(
                                 tempZip.c_str(),
@@ -170,8 +170,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
     MessageBoxW(
         NULL,
-        L"Failed to launch Assetto Corsa Mod Organizer (ACBO).\nPlease ensure build files or payload exist.",
-        L"ACBO Launch Error",
+        L"Failed to launch Assetto Corsa Mod Organizer.\nPlease ensure build files or payload exist.",
+        L"Assetto Corsa Mod Organizer Launch Error",
         MB_OK | MB_ICONERROR
     );
 

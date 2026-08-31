@@ -88,7 +88,7 @@ Dialog {
                     }
 
                     Text {
-                        text: "A new version of ACBO is ready to install"
+                        text: "A new version of ACModOrganizer is ready to install"
                         color: Theme.textSecondary
                         font.family: Theme.fontFamily
                         font.pixelSize: 11

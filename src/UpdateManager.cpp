@@ -57,10 +57,10 @@ void UpdateManager::checkForUpdates(bool silent) {
     m_silentCheck = silent;
     emit isCheckingChanged();
 
-    // Query GitHub Releases API for ACModOrganize
-    QUrl url("https://api.github.com/repos/hrubcin/ACModOrganize/releases/latest");
+    // Query GitHub Releases API for ACModOrganizer
+    QUrl url("https://api.github.com/repos/Ricrdoss/ACModOrganizer/releases/latest");
     QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::UserAgentHeader, "ACBO-App-Updater/1.0");
+    request.setHeader(QNetworkRequest::UserAgentHeader, "ACModOrganizer-App-Updater/1.0");
     request.setRawHeader("Accept", "application/vnd.github.v3+json");
 
     m_currentReply = m_networkManager.get(request);
@@ -104,14 +104,16 @@ void UpdateManager::onCheckFinished() {
         return;
     }
 
-    // Extract asset download URL for ACBO.exe or zip
+    // Extract asset download URL for ACModOrganizer.exe or zip
     QUrl downloadUrl;
     qint64 assetSize = 0;
     QJsonArray assets = obj.value("assets").toArray();
     for (const auto& assetVal : assets) {
         QJsonObject asset = assetVal.toObject();
         QString assetName = asset.value("name").toString();
-        if (assetName.compare("ACBO.exe", Qt::CaseInsensitive) == 0 || assetName.endsWith(".exe", Qt::CaseInsensitive)) {
+        if (assetName.compare("ACModOrganizer.exe", Qt::CaseInsensitive) == 0 ||
+            assetName.compare("ACBO.exe", Qt::CaseInsensitive) == 0 ||
+            assetName.endsWith(".exe", Qt::CaseInsensitive)) {
             downloadUrl = QUrl(asset.value("browser_download_url").toString());
             assetSize = asset.value("size").toInteger();
             break;
@@ -153,7 +155,7 @@ void UpdateManager::startDownloadAndInstall() {
     emit downloadStatusTextChanged();
 
     QString tempDir = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-    m_tempDownloadPath = tempDir + "/ACBO_update.exe";
+    m_tempDownloadPath = tempDir + "/ACModOrganizer_update.exe";
 
     if (QFile::exists(m_tempDownloadPath)) {
         QFile::remove(m_tempDownloadPath);
@@ -170,7 +172,7 @@ void UpdateManager::startDownloadAndInstall() {
     }
 
     QNetworkRequest request(m_downloadUrl);
-    request.setHeader(QNetworkRequest::UserAgentHeader, "ACBO-App-Updater/1.0");
+    request.setHeader(QNetworkRequest::UserAgentHeader, "ACModOrganizer-App-Updater/1.0");
     request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
 
     m_currentReply = m_networkManager.get(request);
@@ -250,23 +252,23 @@ void UpdateManager::applyUpdateAndRestart(const QString& downloadedFilePath) {
     qint64 currentPid = QCoreApplication::applicationPid();
 
     QString tempDir = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-    QString scriptPath = tempDir + "/update_acbo.bat";
+    QString scriptPath = tempDir + "/update_acmodorganizer.bat";
 
-    // Create a self-deleting batch script that waits for ACBO to close, replaces the EXE, and relaunches it
+    // Create a self-deleting batch script that waits for ACModOrganizer to close, replaces the EXE, and relaunches it
     QString scriptContent = QString(
         "@echo off\n"
-        "title Updating ACBO...\n"
-        "echo Waiting for ACBO to close (PID: %1)...\n"
+        "title Updating ACModOrganizer...\n"
+        "echo Waiting for ACModOrganizer to close (PID: %1)...\n"
         ":wait_loop\n"
         "tasklist /fi \"PID eq %1\" 2>nul | find \"%1\" >nul\n"
         "if not errorlevel 1 (\n"
         "    timeout /t 1 /nobreak >nul\n"
         "    goto wait_loop\n"
         ")\n"
-        "echo Applying updated ACBO executable...\n"
+        "echo Applying updated ACModOrganizer executable...\n"
         "copy /y \"%2\" \"%3\" >nul\n"
         "del \"%2\" >nul 2>&1\n"
-        "echo Launching ACBO...\n"
+        "echo Launching ACModOrganizer...\n"
         "start \"\" \"%3\"\n"
         "del \"%~f0\" >nul 2>&1\n"
         "exit\n"

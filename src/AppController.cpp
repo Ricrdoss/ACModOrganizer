@@ -105,7 +105,7 @@ void AppController::setupConnections() {
 
     connect(m_updateManager.get(), &UpdateManager::updateCheckCompleted, this, [this](bool hasUpdate, const QString& ver) {
         if (!hasUpdate) {
-            emit showToast("info", "Up to Date", QString("You are running the latest version of ACBO (%1).").arg(appVersion()));
+            emit showToast("info", "Up to Date", QString("You are running the latest version (%1).").arg(appVersion()));
         } else {
             emit showToast("info", "Update Available", QString("Version %1 is now available!").arg(ver));
         }

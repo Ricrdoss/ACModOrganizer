@@ -28,14 +28,14 @@ int main(int argc, char* argv[]) {
     QGuiApplication app(argc, argv);
     app.setApplicationName("Assetto Corsa Mod Organizer");
     app.setApplicationDisplayName("Assetto Corsa Mod Organizer");
-    app.setOrganizationName("ACBO");
-    app.setOrganizationDomain("github.com/hrubc/ACModOrganize");
+    app.setOrganizationName("ACModOrganizer");
+    app.setOrganizationDomain("github.com/Ricrdoss/ACModOrganizer");
     app.setWindowIcon(QIcon(":/qt/qml/ACBO/ui/icons/app_icon.ico"));
 
     // Use Basic or Fusion dark style for clean modern look
     QQuickStyle::setStyle("Basic");
 
-    LOG_INFO("Initializing AC Brand & Country Organizer (ACBO)...");
+    LOG_INFO("Initializing Assetto Corsa Mod Organizer (ACModOrganizer)...");
 
     QQmlApplicationEngine engine;
 

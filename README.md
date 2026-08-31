@@ -10,7 +10,7 @@
 
 **A blazing-fast, modern desktop tool for organizing, auto-detecting, and batch-updating brand metadata and country origins across your Assetto Corsa car mod collection.**
 
-[Download Latest Release (ACBO.exe)](https://github.com/hrubcin/ACModOrganize/releases/latest) • [Features](#key-features) • [Building from Source](#building-from-source)
+[Download Latest Release (ACModOrganizer.exe)](https://github.com/Ricrdoss/ACModOrganizer/releases/latest) • [Features](#key-features) • [Building from Source](#building-from-source)
 
 </div>
 
@@ -29,7 +29,7 @@
 - **Auto-Suggestions**: 1-click **Apply All Suggestions** instantly resolves missing brands and countries across your library.
 
 ### ⚡ Single Standalone Portable Executable
-- **Zero Installation Required**: Download `ACBO.exe` and run it directly. No zip extraction or scattered DLL files needed.
+- **Zero Installation Required**: Download `ACModOrganizer.exe` and run it directly. No zip extraction or scattered DLL files needed.
 - **Integrated GitHub Auto-Updater**: Checks for new releases via the GitHub API and allows 1-click in-place update and restart.
 
 ### 🛡️ Non-Destructive Backup Protection
@@ -45,8 +45,8 @@
 
 ## 🚀 Download & Quick Start
 
-1. Download **[`ACBO.exe`](https://github.com/hrubcin/ACModOrganize/releases/latest/download/ACBO.exe)** from the latest release.
-2. Double-click `ACBO.exe` to launch.
+1. Download **[`ACModOrganizer.exe`](https://github.com/Ricrdoss/ACModOrganizer/releases/latest/download/ACModOrganizer.exe)** from the latest release.
+2. Double-click `ACModOrganizer.exe` to launch.
 3. Select your Assetto Corsa `content/cars` directory (automatically detected if installed in standard Steam libraries).
 4. Click **Scan Cars** to analyze your library.
 5. Review suggestions and click **Apply All Suggestions** followed by **Save All Pending**.
@@ -64,11 +64,11 @@
 ### 1-Click Build Script
 Clone the repository and run:
 ```cmd
-git clone https://github.com/hrubcin/ACModOrganize.git
-cd ACModOrganize
+git clone https://github.com/Ricrdoss/ACModOrganizer.git
+cd ACModOrganizer
 build_single_exe.bat
 ```
-The compiled standalone executable will be generated at `dist\ACBO.exe`.
+The compiled standalone executable will be generated at `dist\ACModOrganizer.exe`.
 
 ### Manual Build via CMake
 ```cmd
@@ -81,7 +81,7 @@ build\Release\acbo_tests.exe
 ---
 
 ## 🧪 Testing Suite
-ACBO includes a comprehensive test suite covering:
+Assetto Corsa Mod Organizer includes a comprehensive test suite covering:
 - **Brand Detection Engine**: Heuristic aliases, prefix stripping, manufacturer mismatches.
 - **JSON Writer & Backup**: Corrupted JSON recovery, unescaped CR/LF descriptions, backup creation.
 - **Scanner Engine**: Full directory scanning, multi-threaded worker pipeline, folder caching.

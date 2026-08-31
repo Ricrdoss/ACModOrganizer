@@ -43,7 +43,7 @@ Rectangle {
             }
 
             Text {
-                text: "ACBO"
+                text: "Assetto Corsa"
                 font.family: Theme.fontFamilyDisplay
                 font.pixelSize: 13
                 font.weight: Font.Bold
@@ -51,7 +51,7 @@ Rectangle {
             }
 
             Text {
-                text: "Organizer"
+                text: "Mod Organizer"
                 font.family: Theme.fontFamily
                 font.pixelSize: 12
                 color: Theme.textSecondary

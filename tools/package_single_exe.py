@@ -14,7 +14,7 @@ print("Packing runtime files into runtime.zip...")
 with zipfile.ZipFile(runtime_zip, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
     for root, dirs, files in os.walk(release_dir):
         for file in files:
-            if file.lower() in ['acbo_tests.exe', 'acbo_tests.pdb', 'acmodorganize.pdb', 'acmodorganize.exp', 'acmodorganize.lib', 'acbo.exe']:
+            if file.lower() in ['acbo_tests.exe', 'acbo_tests.pdb', 'acmodorganize.pdb', 'acmodorganize.exp', 'acmodorganize.lib', 'acbo.exe', 'acmodorganizer.exe']:
                 continue
             abs_path = os.path.join(root, file)
             rel_path = os.path.relpath(abs_path, release_dir)
@@ -31,7 +31,7 @@ with open(launcher_bin, 'rb') as f_launcher:
 with open(runtime_zip, 'rb') as f_zip:
     zip_data = f_zip.read()
 
-final_exe = os.path.join(dist_dir, 'ACBO.exe')
+final_exe = os.path.join(dist_dir, 'ACModOrganizer.exe')
 with open(final_exe, 'wb') as f_out:
     f_out.write(launcher_data)
     f_out.write(zip_data)
